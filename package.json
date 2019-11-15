@@ -1,0 +1,36 @@
+{
+  "name": "petful.server",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Alex Cumbo",
+  "license": "UNLICENSED",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "migrate": "postgrator --config 'postgrator-config.js'",
+    "migrate:test": "env NODE_ENV=test npm run migrate",
+    "migrate:production": "env SSL=true DATABASE_URL=$(postgres://krlmduuiihlfsd:0559893cb48cdb9d3b3dd590dafda945d6e8d182fe061f9a0f004841db6a02d9@ec2-23-21-109-177.compute-1.amazonaws.com:5432/d3erf0ap0pkv6c) npm run migrate",
+    "start": "nodemon server.js",
+    "predeploy": "npm audit && npm run migrate:production",
+    "deploy": "git push heroku master",
+    "seed": "psql -U petful -d petful-api -f ./seeds/seed.petful_tables.sql"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "helmet": "^3.21.2",
+    "knex": "^0.20.2",
+    "morgan": "^1.9.1",
+    "pg": "^7.12.1",
+    "postgrator": "^3.10.2",
+    "xss": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "postgrator-cli": "^3.3.0"
+  }
+}
