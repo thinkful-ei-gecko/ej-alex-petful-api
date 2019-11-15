@@ -1,17 +1,17 @@
 const express = require('express');
 const queueService = require('./cat-service');
 
-const catRouter = express.Router();
+const queueRouter = express.Router();
 
-catRouter
+queueRouter
   .route('/')
   .get((req, res, next) => {
     queueService.getQueue(req.app.get('db'))
-      .then(cats => res.json(cats))
+      .then(queue => res.json(queue))
       .catch(next);
   })
   .delete((req, res, next) => {
-    res.send('Cat Delete!');
+
   });
 
-module.exports = catRouter;
+module.exports = queueRouter;

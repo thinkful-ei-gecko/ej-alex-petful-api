@@ -1,11 +1,13 @@
 const xss = require('xss');
 
-const catsService = {
+const queueService = {
   getQueue(db) {
     return db
       .from('cats, dogs')
-      .select('*');
+      .select('*')
+      .orderBy('dateEntered')
+      .first();
   },
 };
 
-module.exports = catsService;
+module.exports = queueService;
