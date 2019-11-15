@@ -7,4 +7,3 @@ module.exports = {
     : process.env.DATABASE_URL,
   "ssl": !!process.env.SSL,
 };
-console.log(module.exports);

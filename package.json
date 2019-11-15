@@ -5,7 +5,7 @@
   "keywords": [],
   "author": "Alex Cumbo",
   "license": "UNLICENSED",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js",
@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
+    "env-cmd": "^10.0.1",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "helmet": "^3.21.2",

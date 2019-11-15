@@ -3,8 +3,9 @@ const xss = require('xss');
 const dogsService = {
   getDogs(db) {
     return db
-      .from('dogs')
-      .select('*');
+      .from('pets')
+      .select('*')
+      .where('type', 'dogs');
   },
 
   deleteDog(db, id) {

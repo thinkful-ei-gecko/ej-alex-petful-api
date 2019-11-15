@@ -1,15 +1,13 @@
 const xss = require('xss');
+const catService = require('../cat/cat-service');
+const dogService = require('../dog/dog-service');
+
 
 const queueService = {
-  getQueue(db) {
+  addQueue(db) {
     return db
-      .from('cats')
-      .select('*')
-      .from('dogs')
-      .select('*')
-      .orderBy('dateentered')
-      .first();
-  },
+      .insert()
+  }
 };
 
 module.exports = queueService;
