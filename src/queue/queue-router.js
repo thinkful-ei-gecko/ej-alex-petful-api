@@ -6,7 +6,7 @@ const catRouter = express.Router();
 catRouter
   .route('/')
   .get((req, res, next) => {
-    queueService.getCats(req.app.get('db'))
+    queueService.getQueue(req.app.get('db'))
       .then(cats => res.json(cats))
       .catch(next);
   })
