@@ -1,5 +1,5 @@
 const express = require('express');
-const queueService = require('./cat-service');
+const queueService = require('./queue-service');
 
 const queueRouter = express.Router();
 

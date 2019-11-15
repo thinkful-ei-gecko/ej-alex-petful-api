@@ -3,9 +3,11 @@ const xss = require('xss');
 const queueService = {
   getQueue(db) {
     return db
-      .from('cats, dogs')
+      .from('cats')
       .select('*')
-      .orderBy('dateEntered')
+      .from('dogs')
+      .select('*')
+      .orderBy('dateentered')
       .first();
   },
 };
