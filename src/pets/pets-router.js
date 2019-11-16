@@ -40,7 +40,6 @@ petsRouter
 petsRouter
   .route('/:id')
   .get((req, res, next) => {
-    console.log(req.params);
     petsService.getById(req.app.get('db'), req.params.id)
       .then(pet => {
         res.json(petsService.serializePet(pet));

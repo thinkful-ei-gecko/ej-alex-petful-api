@@ -13,21 +13,21 @@ catRouter
       .then(cats => res.json(cats))
       .catch(next);
   })
+  .post(jsonBodyParser, (req, res, next) => {
+    const { image_url, image_description, name, gender, age, breed, story } = req.body;
+    const newPet = { pet_type: 'cat', image_url, image_description, name, gender, age, breed, story };
+    petsService.insertPet(req.app.get('db'), newPet)
+      .then(pet => res.json(pet))
+      .catch(next);
+  })
   .delete((req, res, next) => {
     catsService.deleteFirstCat(req.app.get('db'), req.params.id)
       .then(() => {
         res.status(204).end();
       })
       .catch(next);
-  })
-  .post(jsonBodyParser, (req, res, next) => {
-    console.log(req.body);
-    const { image_url, image_description, name, gender, age, breed, story } = req.body;
-    const newPet = { pet_type: 'cat', image_url, image_description, name, gender, age, breed, story };
-    petsService.insertPet(req.app.get('db'), newPet)
-      .then(pet => res.json(pet))
-      .catch(next);
   });
+
 
 catRouter
   .route('/first')

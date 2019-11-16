@@ -19,6 +19,13 @@ dogRouter
     petsService.insertPet(req.app.get('db'), newPet)
       .then(pet => res.json(pet))
       .catch(next);
+  })
+  .delete((req, res, next) => {
+    dogsService.deleteFirstDog(req.app.get('db'))
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch(next);
   });
 
 dogRouter
@@ -26,13 +33,6 @@ dogRouter
   .get((req, res, next) => {
     dogsService.getById(req.app.get('db'), req.params.id)
       .then(dog => res.json(dog))
-      .catch(next);
-  })
-  .delete((req, res, next) => {
-    dogsService.deleteDog(req.app.get('db'), req.params.id)
-      .then(() => {
-        res.status(204).end();
-      })
       .catch(next);
   });
 
