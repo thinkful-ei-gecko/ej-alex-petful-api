@@ -39,7 +39,7 @@ When your new project is ready for deployment, add a new heroku application with
 - DELETE /dog
   Deletes the first dog in the list.
 - GET /dog/:id
-  Retrieve a dog by it's id.
+  Retrieve a dog by its id.
 
 ### Cat
 
@@ -52,7 +52,7 @@ When your new project is ready for deployment, add a new heroku application with
 - DELETE /cat
   Deletes the first cat in the list.
 - GET /cat/:id
-  Retrieve a cat by it's id.
+  Retrieve a cat by its id.
 
 ## Pets
 
