@@ -10,6 +10,22 @@ const petsService = {
       .orderBy('date_entered');
   },
 
+  getFirst(db) {
+    return db
+      .from('pets')
+      .select('*')
+      .orderBy('date_entered')
+      .first();
+  },
+
+  getById(db, id) {
+    return db
+      .from('pets')
+      .where({ id })
+      .select('*')
+      .first();
+  },
+
   insertPet(db, pet) {
     return db
       .insert(pet)
@@ -17,9 +33,11 @@ const petsService = {
       .returning('*');
   },
 
-  deletePet(db, id) {
+  deletePet(db) {
     return db('pets')
-      .where({ id })
+      .from('pets')
+      .select('*')
+      .orderBy('date_entered')
       .first()
       .delete();
   },

@@ -17,9 +17,41 @@ petsRouter
     petsService.insertPet(req.app.get('db'), newPet)
       .then(pet => res.json(pet))
       .catch(next);
-  // })
-  // .delete((req, res, next) => {
+  })
+  .delete((req, res, next) => {
+    petsService.deleteFirst(req.app.get('db'), req.params.id)
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch(next);
+  });
 
+petsRouter
+  .route('/first')
+  .get((req, res, next) => {
+    petsService.getFirst(req.app.get('db'))
+      .then(pet => {
+        res.json(petsService.serializePet(pet));
+      })
+      .catch(next);
+  });
+
+petsRouter
+  .route('/:id')
+  .get((req, res, next) => {
+    console.log(req.params);
+    petsService.getById(req.app.get('db'), req.params.id)
+      .then(pet => {
+        res.json(petsService.serializePet(pet));
+      })
+      .catch(next);
+  })
+  .delete((req, res, next) => {
+    petsService.deletePet(req.app.get('db'), req.params.id)
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch(next);
   });
 
 module.exports = petsRouter;
