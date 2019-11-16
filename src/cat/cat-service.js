@@ -3,9 +3,18 @@ const xss = require('xss');
 const catsService = {
   getCats(db) {
     return db
-      .from('cats')
+      .from('pets')
       .select('*')
-      .orderBy('dateEntered');
+      .where('pet_type', 'cat')
+      .orderBy('date_entered');
+  },
+  getFirstCat(db) {
+    return db
+      .from('pets')
+      .select('*')
+      .where('pet_type', 'cat')
+      .orderBy('date_entered')
+      .first();
   },
   deleteCat(db, id) {
     return db('cats')

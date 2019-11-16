@@ -1,0 +1,7 @@
+BEGIN;
+
+DROP TABLE IF EXISTS pets;
+
+DROP TYPE IF EXISTS pet_type;
+
+COMMIT;

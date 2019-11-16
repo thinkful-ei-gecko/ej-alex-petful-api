@@ -1,22 +1,22 @@
 BEGIN;
 
-TRUNCATE cats RESTART IDENTITY CASCADE;
-
-TRUNCATE dogs RESTART IDENTITY CASCADE;
+TRUNCATE pets RESTART IDENTITY CASCADE;
 
 INSERT INTO
-  cats (
-    imageURL,
-    imageDescription,
+  pets (
+    pet_type,
+    image_url,
+    image_description,
     name,
     gender,
     age,
     breed,
     story,
-    dateEntered
+    date_entered
   )
 VALUES
   (
+    'cat',
     'http://placekitten.com/200/300',
     'A beautiful kitten who needs a home',
     'Mittens',
@@ -27,6 +27,7 @@ VALUES
     '2019-11-15T00:00:00.615Z'
   ),
   (
+    'cat',
     'http://placekitten.com/200/300',
     'A beautiful kitten who needs a home',
     'Tina',
@@ -37,6 +38,7 @@ VALUES
     '2019-10-15T00:00:00.615Z'
   ),
   (
+    'cat',
     'http://placekitten.com/200/300',
     'A beautiful kitten who needs a home',
     'Tauhida',
@@ -47,6 +49,7 @@ VALUES
     '2019-09-15T00:00:00.615Z'
   ),
   (
+    'cat',
     'http://placekitten.com/200/300',
     'A beautiful kitten who needs a home',
     'Morty',
@@ -55,21 +58,9 @@ VALUES
     'Highlander',
     'Abandoned outside in a basket with a note.',
     '2019-08-15T00:00:00.615Z'
-  );
-
-INSERT INTO
-  dogs (
-    imageURL,
-    imageDescription,
-    name,
-    gender,
-    age,
-    breed,
-    story,
-    dateEntered
-  )
-VALUES
+  ),
   (
+    'dog',
     'https://dog.ceo/api/breed/hound/images/random',
     'A noble hound with sad eyes.',
     'Dodger',
@@ -80,6 +71,7 @@ VALUES
     '2019-11-15T00:00:00.615Z'
   ),
   (
+    'dog',
     'https://dog.ceo/api/breed/beagle/images/random',
     'The most beautiful beagle in the world',
     'Mimi',
@@ -90,6 +82,7 @@ VALUES
     '2019-07-15T00:00:00.615Z'
   ),
   (
+    'dog',
     'https://dog.ceo/api/breed/retriever-chesapeake/images/random',
     'The noble chesapeake retriever, doing cute things',
     'Moanna',
@@ -100,6 +93,7 @@ VALUES
     '2019-11-12T00:00:00.615Z'
   ),
   (
+    'dog',
     'https://dog.ceo/api/breed/ridgeback-rhodesian/images/random',
     'An extremely earnest looking dog',
     'Lipton',
