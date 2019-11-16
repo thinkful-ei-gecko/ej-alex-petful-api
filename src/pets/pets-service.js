@@ -9,7 +9,6 @@ const petsService = {
       .select('*')
       .orderBy('date_entered');
   },
-
   getFirst(db) {
     return db
       .from('pets')
@@ -17,7 +16,6 @@ const petsService = {
       .orderBy('date_entered')
       .first();
   },
-
   getById(db, id) {
     return db
       .from('pets')
@@ -25,40 +23,18 @@ const petsService = {
       .select('*')
       .first();
   },
-
   insertPet(db, pet) {
     return db
       .insert(pet)
       .into('pets')
       .returning('*');
   },
-
   deletePetById(db, id) {
     return db
       .from('pets')
       .where({id})
       .delete();
   },
-
-  getIdOfFirstCat(db) {
-    return db
-      .from('pets')
-      .select('*')
-      .where('pet_type', 'cat')
-      .orderBy('date_entered')
-      .first();
-  },
-
-  getIdOfFirstDog(db) {
-    return db
-      .from('pets')
-      .select('*')
-      .where('pet_type', 'dog')
-      .orderBy('date_entered')
-      .first();
-  },
-
-
   serializePet(pet) {
     return {
       id: pet.id,

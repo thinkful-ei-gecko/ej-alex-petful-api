@@ -8,14 +8,28 @@ const catsService = {
       .where('pet_type', 'cat')
       .orderBy('date_entered');
   },
-  getFirstCat(db) {
+  getFirst(db) {
     return db
       .from('pets')
       .select('*')
       .where('pet_type', 'cat')
       .orderBy('date_entered')
       .first();
-  }
+  },
+  deleteFirstCat(db) {
+    return db
+      .from('pets')
+      .select('id')
+      .where('pet_type', 'cat')
+      .orderBy('date_entered')
+      .first()
+      .then(id => {
+
+        return db('pets')
+          .where('id', id.id)
+          .delete();
+      });
+  },
 };
 
 module.exports = catsService;

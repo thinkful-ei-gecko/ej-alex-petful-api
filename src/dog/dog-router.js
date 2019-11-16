@@ -1,6 +1,8 @@
 const express = require('express');
-const xss = require('xss'); //remove when services done
 const dogsService = require('./dog-service');
+const petsService = require('../pets/pets-service');
+
+const jsonBodyParser = express.json();
 
 const dogRouter = express.Router();
 
@@ -9,6 +11,13 @@ dogRouter
   .get((req, res, next) => {
     dogsService.getDogs(req.app.get('db'))
       .then(dogs => res.json(dogs))
+      .catch(next);
+  })
+  .post(jsonBodyParser, (req, res, next) => {
+    const { image_url, image_description, name, gender, age, breed, story } = req.body;
+    const newPet = { pet_type: 'dog', image_url, image_description, name, gender, age, breed, story };
+    petsService.insertPet(req.app.get('db'), newPet)
+      .then(pet => res.json(pet))
       .catch(next);
   });
 
