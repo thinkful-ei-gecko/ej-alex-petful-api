@@ -8,16 +8,16 @@ const express = require('express'),
 const app = express();
 
 const morganOption = (NODE_ENV === 'production');
-const catRouter = require('./cat/cat-router');
-const dogRouter = require('./dog/dog-router');
+const catsRouter = require('./cat/cats-router');
+const dogsRouter = require('./dog/dogs-router');
 const petsRouter = require('./pets/pets-router');
 
 app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-app.use('/api/dog', dogRouter);
-app.use('/api/cat', catRouter);
+app.use('/api/dog', dogsRouter);
+app.use('/api/cat', catsRouter);
 app.use('/api/pets', petsRouter);
 
 app.use(function errorHandler(error, req, res, next) {
