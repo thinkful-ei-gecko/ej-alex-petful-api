@@ -19,7 +19,7 @@ petsRouter
       .catch(next);
   })
   .delete((req, res, next) => {
-    petsService.deleteFirst(req.app.get('db'), req.params.id)
+    petsService.deletePet(req.app.get('db'))
       .then(() => {
         res.status(204).end();
       })
@@ -43,13 +43,6 @@ petsRouter
     petsService.getById(req.app.get('db'), req.params.id)
       .then(pet => {
         res.json(petsService.serializePet(pet));
-      })
-      .catch(next);
-  })
-  .delete((req, res, next) => {
-    petsService.deletePet(req.app.get('db'), req.params.id)
-      .then(() => {
-        res.status(204).end();
       })
       .catch(next);
   });

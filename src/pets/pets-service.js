@@ -33,14 +33,31 @@ const petsService = {
       .returning('*');
   },
 
-  deletePet(db) {
-    return db('pets')
+  deletePetById(db, id) {
+    return db
       .from('pets')
-      .select('*')
-      .orderBy('date_entered')
-      .first()
+      .where({id})
       .delete();
   },
+
+  getIdOfFirstCat(db) {
+    return db
+      .from('pets')
+      .select('*')
+      .where('pet_type', 'cat')
+      .orderBy('date_entered')
+      .first();
+  },
+
+  getIdOfFirstDog(db) {
+    return db
+      .from('pets')
+      .select('*')
+      .where('pet_type', 'dog')
+      .orderBy('date_entered')
+      .first();
+  },
+
 
   serializePet(pet) {
     return {
