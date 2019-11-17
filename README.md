@@ -31,36 +31,22 @@ When your new project is ready for deployment, add a new heroku application with
 ### Dog
 
 - GET /dog
-  Retrieve a list of all dogs by date entered.
+  Retrieve a list of all dogs in queue order.
 - GET /dog/first
-  Retrieve the dog available for adoption.
-- POST /dog
-  Post a new dog.
+  Retrieve the first dog.
 - DELETE /dog
-  Deletes the first dog in the list.
-- GET /dog/:id
-  Retrieve a dog by its id.
+  Dequeues the first dog and responds with dog.
 
 ### Cat
 
 - GET /cat
-  Retrieve a list of all cats by date entered.
+  Retrieve a list of all cats in queue order.
 - GET /cat/first
-  Retrieve the cat available for adoption.
-- POST /cat
-  Post a new cat.
+  Retrieve the first cat.
 - DELETE /cat
-  Deletes the first cat in the list.
-- GET /cat/:id
-  Retrieve a cat by its id.
+  Dequeues the first cat and responds with cat.
 
 ## Pets
 
 - GET /pets
-  Retrieve all pets by date entered.
-- GET /pets/first
-  Retrieve the pet available for adoption.
-- POST /pets
-  Post a new pet, so long as the pet_type is defined in the body.
-- GET /pets/:id
-  Retrieve any pet by its id.
+  Retrieve all pets in cat/dog order by queue order.

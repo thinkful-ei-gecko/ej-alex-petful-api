@@ -6,7 +6,7 @@ const jsonBodyParser = express.json();
 const catsRouter = express.Router();
 
 catsRouter
-  .route('/')
+  .route('/first')
   .get((req, res, next) => {
     res.status(200).send(catsQueue.viewTopCat());
   })
