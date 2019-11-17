@@ -43,20 +43,4 @@ class Queue {
   }
 }
 
-function peek(queue) {
-  return queue.first;
-}
-
-function isEmpty(queue) {
-  return !!queue;
-}
-
-function display(queue) {
-  let curr = peek(queue);
-  while (!!curr) {
-    console.log(curr.value);
-    curr = curr.next;
-  }
-}
-
 module.exports = Queue;

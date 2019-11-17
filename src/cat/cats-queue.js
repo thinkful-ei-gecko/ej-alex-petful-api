@@ -1,4 +1,4 @@
-const Queue = require('../');
+const Queue = require('../queue/Queue');
 const queueHelp = require('../queue/queueHelpers');
 
 const catsQueue = {
@@ -68,20 +68,20 @@ const catsQueue = {
     },
   ],
 
-  catsQueue: new Queue(),
+  queue: new Queue(),
 
   populateQueue() {
-    this.catsArr.forEach((cat) => this.catsQueue.enqueue(cat));
+    this.catsArr.forEach((cat) => this.queue.enqueue(cat));
     return this.catsQueue;
   },
 
   viewTopCat() {
-    return queueHelp.peek(this.catsQueue);
+    return queueHelp.peek(this.queue);
   },
 
   catAdopted() {
-    const cat = this.catsQueue.dequeue();
-    this.catsQueue.enqueue(cat);
+    const cat = this.queue.dequeue();
+    this.queue.enqueue(cat);
     return cat;
   },
 };

@@ -68,20 +68,20 @@ const dogsQueue = {
     },
   ],
 
-  dogsQueue: new Queue(),
+  queue: new Queue(),
 
   populateQueue() {
-    this.dogArr.forEach((dog) => this.dogsQueue.enqueue(dog));
+    this.dogArr.forEach((dog) => this.queue.enqueue(dog));
     return this.dogsQueue;
   },
 
   viewTopdog() {
-    return queueHelpers.peek(this.dogsQueue);
+    return queueHelpers.peek(this.queue);
   },
 
   dogAdopted() {
-    const dog = this.dogsQueue.dequeue();
-    this.dogsQueue.enqueue(dog);
+    const dog = this.queue.dequeue();
+    this.queue.enqueue(dog);
     return dog;
   },
 };
