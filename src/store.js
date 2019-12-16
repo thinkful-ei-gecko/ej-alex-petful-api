@@ -1,6 +1,7 @@
+const Queue = require('./queue/Queue');
 
-const STORE = {
-  pets: [
+const STORE =
+  [
     {
       type: 'cat',
       imageURL:
@@ -132,7 +133,16 @@ const STORE = {
       breed: 'Havanese',
       story: 'Confiscated by authorities from illegal trade.'
     }
-  ]
-};
+  ];
 
-module.exports = STORE;
+const catsQueue = new Queue();
+STORE.forEach(pet => pet.type === 'cat' ? catsQueue.enqueue(pet) : null);
+
+const dogsQueue = new Queue();
+STORE.forEach(pet => pet.type === 'dog' ? dogsQueue.enqueue(pet) : null);
+
+module.exports = {
+  STORE,
+  catsQueue,
+  dogsQueue
+}

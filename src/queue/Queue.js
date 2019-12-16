@@ -15,11 +15,11 @@ class Queue {
 
     const node = new _Node(data);
 
-    if (this.first === null) {
+    if (this.first === null && this.last === null) {
       this.first = node;
     }
 
-    if (this.last) {
+    if (this.last !== null) {
       this.last.next = node;
     }
 
