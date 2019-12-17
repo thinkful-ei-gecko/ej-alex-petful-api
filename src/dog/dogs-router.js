@@ -1,6 +1,6 @@
 const express = require('express');
 const dogsServices = require('./dogs-services');
-const STORE = require('../STORE');
+const STORE = require('../store/STORE');
 
 const dogsRouter = express.Router();
 
