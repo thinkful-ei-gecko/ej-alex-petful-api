@@ -1,16 +1,16 @@
 const express = require('express');
 const catsServices = require('./cats-services');
-const store = require('../STORE');
+const STORE = require('../STORE');
 
 const catsRouter = express.Router();
 
 catsRouter
   .route('/')
   .get((req,res,next) => {
-    return res.status(200).json(catsServices.getOneCat(store));
+    return res.status(200).json(catsServices.getOneCat(STORE));
   })
   .delete((req,res,next) => {
-    catsServices.deleteCat(store);
+    catsServices.deleteCat(STORE);
     return res.status(204).end();
   });
 

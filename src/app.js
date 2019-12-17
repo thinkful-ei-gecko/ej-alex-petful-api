@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
   res.send('Petful is Go!');
 });
 
-app.use('/api/dog', dogsRouter);
-app.use('/api/cat', catsRouter);
+app.use('/api/dogs', dogsRouter);
+app.use('/api/cats', catsRouter);
 app.use('/api/pets', petsRouter);
 
 // Catch-all 404

@@ -1,16 +1,16 @@
 const express = require('express');
 const dogsServices = require('./dogs-services');
-const store = require('../STORE');
+const STORE = require('../STORE');
 
 const dogsRouter = express.Router();
 
 dogsRouter
   .route('/')
   .get((req,res,next) => {
-    return res.status(200).json(dogsServices.getOneDog(store));
+    return res.status(200).json(dogsServices.getOneDog(STORE));
   })
   .delete((req,res,next) => {
-    dogsServices.deleteDog(store);
+    dogsServices.deleteDog(STORE);
     return res.status(204).end();
   });
 

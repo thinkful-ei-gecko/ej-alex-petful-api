@@ -46,9 +46,11 @@ const queueHelpers = {
 
   arrayFromQueue(queue) {
     let newArray = [];
-    console.log(queue.isEmpty());
-    while (!queue.isEmpty()) {
-      newArray.push(queue.dequeue());
+    let curr = queue.first;
+
+    while (curr !== null) {
+      newArray.push(curr.value);
+      curr = curr.next;
     }
     return newArray;
   }

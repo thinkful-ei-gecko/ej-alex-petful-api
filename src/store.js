@@ -1,5 +1,5 @@
 const Queue = require('./queue/Queue');
-const { mergeQueues, arrayFromQueue, copyQueue } = require('./queue/queueHelpers');
+const { arrayFromQueue } = require('./queue/queueHelpers');
 
 const STORE =
   [
@@ -160,7 +160,7 @@ const shufflePets = (a, b) => {
       j++;
     }
   }
-  
+
   return newArr;
 };
 
