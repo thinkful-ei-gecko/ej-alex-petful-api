@@ -1,7 +1,7 @@
 class _Node {
   constructor(value, next) {
     this.value = value;
-    this.next = next;
+    this.next = next || null;
   }
 }
 
@@ -40,6 +40,14 @@ class Queue {
     }
 
     return node.value;
+  }
+
+  isEmpty() {
+    if (this.first === null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

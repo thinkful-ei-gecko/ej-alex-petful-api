@@ -1,4 +1,4 @@
-const { dogsQueue } = require('../store');
+const { dogsQueue } = require('../STORE');
 
 const dogsServices = {
   getAllDogs() {

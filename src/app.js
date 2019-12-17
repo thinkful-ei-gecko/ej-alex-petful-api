@@ -10,7 +10,7 @@ const app = express();
 // const morganOption = (NODE_ENV === 'production');
 const catsRouter = require('./cat/cats-router');
 const dogsRouter = require('./dog/dogs-router');
-// const petsRouter = require('./pets/pets-router');
+const petsRouter = require('./pets/pets-router');
 
 // app.use(morgan(morganOption));
 app.use(helmet());
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/dog', dogsRouter);
 app.use('/api/cat', catsRouter);
-// app.use('/api/pets', petsRouter);
+app.use('/api/pets', petsRouter);
 
 // Catch-all 404
 app.use(function (req, res, next) {

@@ -1,10 +1,7 @@
+const Queue = require('./Queue')
 
 /* eslint-disable no-console */
 const queueHelpers = {
-
-  isEmpty(queue) {
-    return !queue.first;
-  },
 
   peek(queue) {
     return queue.first;
@@ -12,21 +9,46 @@ const queueHelpers = {
 
   display(queue) {
     let curr = this.peek(queue);
-    while (!!curr) {
+    while (curr) {
       console.log(curr.value);
       curr = curr.next;
     }
   },
 
-  populateQueue(queue, arr) {
-    arr.forEach((pet) => queue.enqueue(pet));
-    return queue;
+  copyQueue(queue) {
+    let newQueue = new Queue();
+    
+    console.log(queue);
+    console.log('queue first: ', queue.first);
+    
+    let curr = queue.first;
+
+    while (curr !== null) {
+      console.log('Curr:', curr);
+      newQueue.enqueue(curr.value);
+      console.log('newQueue after enqueue: ', newQueue);
+      curr = curr.next;
+    }
+
+    return newQueue;
+  },
+
+  mergeQueues(a, b) {
+    let newQueue = new Queue();
+    while (!a.isEmpty() || !b.isEmpty()) {
+      if (!a.isEmpty())
+        newQueue.enqueue(a.dequeue());
+      if (!b.isEmpty())
+        newQueue.enqueue(b.dequeue());
+    }
+    return newQueue;
   },
 
   arrayFromQueue(queue) {
     let newArray = [];
-    while (!this.isEmpty(queue)) {
-      newArray = [ ...newArray, queue.dequeue()];
+    console.log(queue.isEmpty());
+    while (!queue.isEmpty()) {
+      newArray.push(queue.dequeue());
     }
     return newArray;
   }

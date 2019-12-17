@@ -1,47 +1,24 @@
 const express = require('express');
-const petsList = require('./pets-list');
-const jsonBodyParser = express.json();
+const { petLists } = require('../STORE');
 
 const petsRouter = express.Router();
 
 petsRouter
   .route('/')
   .get((req, res, next) => {
-    res.json(petsList);
+    res.json(petLists().pets);
   });
-//   .post(jsonBodyParser, (req, res, next) => {
-//     const { pet_type, image_url, image_description, name, gender, age, breed, story } = req.body;
-//     const newPet = { pet_type, image_url, image_description, name, gender, age, breed, story };
 
-//     if (newPet.pet_type == null) {
-//       return res.status(400).json({
-//         error: `Missing pet type in request body.`
-//       });
-//     }
+petsRouter
+  .route('/cats')
+  .get((req, res, next) => {
+    res.json(petLists().cats);
+  });
 
-//     petsService.insertPet(req.app.get('db'), newPet)
-//       .then(pet => res.json(pet))
-//       .catch(next);
-//   });
-
-// petsRouter
-//   .route('/first')
-//   .get((req, res, next) => {
-//     petsService.getFirst(req.app.get('db'))
-//       .then(pet => {
-//         res.json(petsService.serializePet(pet));
-//       })
-//       .catch(next);
-//   });
-
-// petsRouter
-//   .route('/:id')
-//   .get((req, res, next) => {
-//     petsService.getById(req.app.get('db'), req.params.id)
-//       .then(pet => {
-//         res.json(petsService.serializePet(pet));
-//       })
-//       .catch(next);
-//   });
+petsRouter
+  .route('/dogs')
+  .get((req, res, next) => {
+    res.json(petLists().dogs);
+  });
 
 module.exports = petsRouter;

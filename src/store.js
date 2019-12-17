@@ -1,4 +1,5 @@
 const Queue = require('./queue/Queue');
+const { mergeQueues, arrayFromQueue, copyQueue } = require('./queue/queueHelpers');
 
 const STORE =
   [
@@ -135,14 +136,50 @@ const STORE =
     }
   ];
 
+
+//Generate queues for each pet type from STORE.
 const catsQueue = new Queue();
 STORE.forEach(pet => pet.type === 'cat' ? catsQueue.enqueue(pet) : null);
 
 const dogsQueue = new Queue();
 STORE.forEach(pet => pet.type === 'dog' ? dogsQueue.enqueue(pet) : null);
 
+const shufflePets = (a, b) => {
+  let newArr = [];
+
+  let i = 0;
+  let j = 0;
+
+  while (i < a.length || j < b.length) {
+    if (i !== a.length) {
+      newArr = [...newArr, a[i]];
+      i++;
+    }
+    if (j !== b.length) {
+      newArr = [...newArr, b[j]];
+      j++;
+    }
+  }
+  
+  return newArr;
+};
+
+//Array version of cats/dogs queues, for use on pets endpoints.
+function petLists() {
+  let cats = arrayFromQueue(catsQueue);
+  let dogs = arrayFromQueue(dogsQueue);
+  let pets = shufflePets(cats, dogs);
+
+  return {
+    cats: cats,
+    dogs: dogs,
+    pets: pets
+  };
+}
+
 module.exports = {
   STORE,
   catsQueue,
-  dogsQueue
-}
+  dogsQueue,
+  petLists
+};
