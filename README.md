@@ -30,23 +30,23 @@ When your new project is ready for deployment, add a new heroku application with
 
 ### Dog
 
-- GET /dog
+- GET api/dog
   Retrieve a list of all dogs in queue order.
-- GET /dog/first
+- GET api/dog/first
   Retrieve the first dog.
-- DELETE /dog
+- DELETE api/dog
   Dequeues the first dog and responds with dog.
 
 ### Cat
 
-- GET /cat
+- GET api/cat
   Retrieve a list of all cats in queue order.
-- GET /cat/first
+- GET api/cat/first
   Retrieve the first cat.
-- DELETE /cat
+- DELETE api/cat
   Dequeues the first cat and responds with cat.
 
 ## Pets
 
-- GET /pets
+- GET api/pets
   Retrieve all pets in cat/dog order by queue order.
